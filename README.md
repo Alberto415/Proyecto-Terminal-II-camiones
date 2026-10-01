@@ -10,7 +10,8 @@ Prototipo académico de navegación especializada para transporte pesado. Calcul
 - Algoritmo A* ponderado por distancia y pendiente.
 - Restricciones por gálibo, peso, ancho disponible y pendiente.
 - Bloqueos dinámicos con recálculo automático.
-- Animación del vehículo en el mapa y simulador 3D.
+- Animación del vehículo en el mapa y simulador WebGL con Three.js.
+- Escena tridimensional con carretera dinámica, edificios, iluminación, sombras, puente con gálibo y cuatro cámaras interactivas.
 - Bitácora de decisiones, métricas y pruebas automatizadas.
 - Diseño adaptable a computadoras, tabletas y teléfonos.
 
@@ -35,6 +36,7 @@ npm test
 ## Estructura principal
 
 - `app/page.tsx`: interfaz, estados y simulación.
+- `app/components/TruckSimulation3D.tsx`: escena Three.js, camión, entorno y cámaras.
 - `app/lib/routing.ts`: red vial, restricciones y algoritmo A*.
 - `app/globals.css`: diseño completo y vista 3D.
 - `tests/`: pruebas de renderizado y presencia del motor de rutas.

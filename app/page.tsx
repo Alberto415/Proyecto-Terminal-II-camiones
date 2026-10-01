@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import TruckSimulation3D from "./components/TruckSimulation3D";
 import {
   edgeFor,
   findRoute,
@@ -81,6 +82,12 @@ export default function Home() {
   const routeEdgeSet = useMemo(() => new Set(route.edgeIds), [route.edgeIds]);
   const blockedSet = useMemo(() => new Set(blocked), [blocked]);
   const truckPosition = positionAlongPath(route.path, progress);
+  const routePoints3D = useMemo(
+    () => route.path.map((id) => ({ x: nodeFor(id).x, y: nodeFor(id).y })),
+    [route.path],
+  );
+  const activeEdge = route.edgeIds[Math.min(route.edgeIds.length - 1, Math.floor(progress * route.edgeIds.length))]?.toUpperCase() ?? "";
+  const simulatedSpeed = running ? Math.round(38 + Math.sin(progress * 20) * 7) : 0;
 
   useEffect(() => {
     if (!running || route.path.length < 2) return;
@@ -269,12 +276,7 @@ export default function Home() {
       <section className="lower-deck" id="simulation">
         <div className="simulation-card">
           <div className="card-heading"><div><p className="eyebrow">SIMULADOR DE AGENTE</p><h2>Vista operacional 3D</h2></div><span className={running ? "live" : "paused"}>{running ? "● EN CURSO" : "● EN PAUSA"}</span></div>
-          <div className="scene-3d">
-            <div className="scene-sky"><i /><i /><i /><i /><i /><i /></div>
-            <div className="road-plane"><div className="lane-markers" /></div>
-            <div className="truck-3d" style={{ transform: `translateX(${progress * 250 - 90}px) translateY(${progress * -10}px)` }}><div className="truck-cargo">RUTA CARGA</div><div className="truck-cab"><span /></div><i className="wheel one" /><i className="wheel two" /><i className="wheel three" /></div>
-            <div className="scene-hud"><span>VELOCIDAD<strong>{running ? Math.round(38 + Math.sin(progress * 20) * 7) : 0} km/h</strong></span><span>TRAMO<strong>{route.edgeIds[Math.min(route.edgeIds.length - 1, Math.floor(progress * route.edgeIds.length))]?.toUpperCase() ?? "—"}</strong></span><span>PROGRESO<strong>{Math.round(progress * 100)}%</strong></span></div>
-          </div>
+          <TruckSimulation3D routePoints={routePoints3D} progress={progress} running={running} edgeId={activeEdge} speed={simulatedSpeed} />
         </div>
 
         <aside className="event-card">

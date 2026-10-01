@@ -231,3 +231,36 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
   .scene-3d { height: 240px; }.truck-3d { left: 22%; }.scene-hud span { min-width: 0; flex: 1; }
   .map-legend { flex-direction: column; gap: 5px; }
 }
+
+.three-shell { height: 440px; min-height: 380px; background: #071a24; position: relative; overflow: hidden; isolation: isolate; }
+.three-shell:fullscreen { height: 100vh; width: 100vw; }
+.three-canvas { position: absolute; inset: 0; }
+.three-canvas canvas { width: 100%; height: 100%; display: block; touch-action: none; }
+.three-loading, .three-error { position: absolute; inset: 0; z-index: 8; display: flex; align-items: center; justify-content: center; gap: 10px; color: #b7d0d2; font-size: 11px; letter-spacing: .4px; background: #071a24; }
+.three-loading span { width: 18px; height: 18px; border-radius: 50%; border: 2px solid rgba(57,217,138,.2); border-top-color: #39d98a; animation: three-spin .85s linear infinite; }
+.three-error { flex-direction: column; color: white; }
+.three-error small { color: #89a2a7; }
+@keyframes three-spin { to { transform: rotate(360deg); } }
+.three-toolbar { position: absolute; z-index: 10; left: 15px; top: 15px; display: flex; gap: 4px; padding: 4px; border: 1px solid rgba(135,182,177,.2); background: rgba(4,20,27,.82); backdrop-filter: blur(12px); border-radius: 8px; box-shadow: 0 7px 24px rgba(0,0,0,.24); }
+.three-toolbar button { border: 0; border-radius: 5px; height: 31px; padding: 0 10px; background: transparent; color: #8ca6ab; font-size: 8px; font-weight: 800; letter-spacing: .35px; }
+.three-toolbar button:hover { color: white; background: rgba(255,255,255,.06); }
+.three-toolbar button.active { color: #ceffeb; background: rgba(38,190,127,.2); box-shadow: inset 0 0 0 1px rgba(57,217,138,.28); }
+.three-toolbar .fullscreen-button { border-left: 1px solid rgba(255,255,255,.11); border-radius: 0 5px 5px 0; margin-left: 3px; padding-left: 13px; }
+.three-hud { position: absolute; z-index: 10; left: 15px; right: 15px; bottom: 14px; display: flex; align-items: stretch; gap: 6px; pointer-events: none; }
+.three-hud > span { min-width: 105px; padding: 8px 11px; display: flex; flex-direction: column; gap: 3px; color: #7e9ba0; background: rgba(4,20,27,.84); border: 1px solid rgba(124,176,164,.18); border-radius: 6px; backdrop-filter: blur(10px); }
+.three-hud small { font-size: 6px; letter-spacing: .9px; }
+.three-hud strong { color: #e7fff6; font-size: 11px; letter-spacing: .4px; }
+.three-hud em { color: #7e9ba0; font-size: 7px; font-style: normal; font-weight: 400; }
+.three-hud .sensor-status { min-width: 0; margin-left: auto; flex-direction: row; align-items: center; color: #9de4c5; font-size: 8px; }
+.sensor-status i { width: 7px; height: 7px; border-radius: 50%; background: #39d98a; box-shadow: 0 0 0 4px rgba(57,217,138,.12), 0 0 10px rgba(57,217,138,.65); }
+.three-help { position: absolute; z-index: 10; top: 61px; left: 15px; color: #8ea8ad; background: rgba(4,20,27,.75); border-radius: 5px; padding: 6px 9px; font-size: 7px; letter-spacing: .35px; }
+.three-vignette { position: absolute; z-index: 7; inset: 0; pointer-events: none; box-shadow: inset 0 0 90px rgba(0,0,0,.38); background: linear-gradient(180deg, rgba(7,26,36,.08), transparent 55%, rgba(4,17,22,.18)); }
+
+@media (max-width: 790px) {
+  .three-shell { height: 390px; min-height: 350px; }
+  .three-toolbar { right: 10px; left: 10px; overflow-x: auto; }
+  .three-toolbar button { flex: 1; padding: 0 7px; white-space: nowrap; }
+  .three-hud { left: 10px; right: 10px; bottom: 10px; }
+  .three-hud > span { min-width: 0; flex: 1; padding: 7px; }
+  .three-hud .sensor-status { display: none; }
+}
