@@ -17,6 +17,7 @@ test("renderiza la aplicación Ruta Carga 3D", async () => {
   assert.match(html, /PLANIFICADOR ESPECIALIZADO/);
   assert.match(html, /Calcular ruta segura/);
   assert.match(html, /SIMULADOR DE AGENTE/);
+  assert.match(html, /Mapa 3D/);
   assert.match(html, /Seguimiento/);
   assert.match(html, /Órbita/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/);

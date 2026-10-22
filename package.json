@@ -1,6 +1,6 @@
 {
   "name": "mapa-camiones-3d",
-  "version": "0.1.0",
+  "version": "2.3.0",
   "private": true,
   "engines": {
     "node": ">=22.13.0"
@@ -9,9 +9,11 @@
     "dev": "vinext dev",
     "build": "vinext build",
     "start": "vinext start",
-    "test": "npm run build && node --test tests/rendered-html.test.mjs tests/routing.test.mjs",
+    "test": "npm run build && node --test tests/rendered-html.test.mjs tests/routing.test.mjs tests/road-routing.test.mjs tests/simulation-route.test.mjs tests/truck-motion.test.mjs tests/osm-scenery.test.mjs tests/academic-prototype.test.mjs tests/academic-evaluation.test.mjs",
+    "models:generate": "node scripts/generate-truck-fleet.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
-    "db:generate": "drizzle-kit generate"
+    "db:generate": "drizzle-kit generate",
+    "verify:locations": "node scripts/verify-locations.mjs"
   },
   "dependencies": {
     "@types/three": "^0.185.4",

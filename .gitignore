@@ -21,6 +21,8 @@
 # misc
 .DS_Store
 *.pem
+/.idea/
+/.claude/
 
 # debug
 npm-debug.log*
@@ -38,3 +40,4 @@ yarn-error.log*
 /.wrangler/
 /outputs/
 /work/
+*.tsbuildinfo

@@ -1,0 +1,10 @@
+.simulation-view-picker { display:flex; gap:8px; align-items:center; flex-wrap:wrap; padding:16px 18px; background:#edf1e5; border-bottom:1px solid #dbe2d1; }
+.simulation-view-picker button { min-height:42px; padding:10px 16px; border:1px solid #c9d5be; border-radius:10px; background:#fff; color:#34533f; font-size:12px; }
+.simulation-view-picker button[aria-pressed=true] { color:#fff; background:#294f40; border-color:#294f40; }
+.simulation-view-picker span { font-size:11px; color:#5f7359; }
+.simulation-geographic .google3d-shell { height:620px; }
+.simulation-geographic { position:relative; }
+.simulation-guidance { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:14px 18px; background:#294f40; color:#f4f7ed; }
+.simulation-guidance strong { font-size:14px; }
+.simulation-guidance small { font-size:11px; color:#d4dfc8; }
+@media(max-width:600px) { .simulation-guidance { align-items:flex-start; flex-direction:column; }.simulation-view-picker button { flex:1; }.simulation-geographic .google3d-shell { height:520px; } }
